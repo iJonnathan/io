@@ -16,6 +16,11 @@ app.post('/contactMe', (req, res) => {
         res.status(500).send('error datos enviados!');
     }
 })
+app.get('/init', (req, res) => {
+    console.log("JSON.stringify(req.body)")
+    res.send({10:"good"})
+    
+})
 app.listen(process.env.PORT || 3000, () => {
     console.log('Servidor corriendo')
 

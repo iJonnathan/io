@@ -55,7 +55,8 @@ export default {
     return {
       name: "",
       email: "",
-      message: ""
+      message: "",
+      serverIp: process.env.SERVER_IP
     };
   },
   methods:{
@@ -64,7 +65,7 @@ export default {
     },
     sendMessage(){
       if(this.name!='' && this.email!='' && this.message!=''){
-        axios.post('http://localhost:3000/contactMe', {
+        axios.post(this.serverIp+'/contactMe', {
           message: {name:this.name, email:this.email, message:this.message}
         }).then(response => {
            
