@@ -1,0 +1,64 @@
+<div class="contact-section" id="contactme">
+  <div class="container section-padding">
+    <div class="section-title-wrapper text-center">
+      <h2 class="title section-title" style="color: var(--light);">- Contáctame -</h2>
+    </div>
+
+    <!-- Notification Toast -->
+    @if (notification().show) {
+      <div class="toast-notification" [class.toast-error]="notification().type === 'error'">
+        {{ notification().text }}
+      </div>
+    }
+
+    <div class="form-wrapper glass-panel">
+      
+      @if (isSending()) {
+        <div class="sending-overlay">
+          <div class="spinner"></div>
+          <p>Enviando...</p>
+        </div>
+      }
+
+      <form (submit)="sendMessage($event)">
+        <div class="input-group">
+          <label for="name">Nombre</label>
+          <div class="input-field">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <input type="text" id="name" [ngModel]="name()" (ngModelChange)="name.set($event)" name="name" placeholder="Ingresa tu nombre">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="email">Email</label>
+          <div class="input-field">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <input type="email" id="email" [ngModel]="email()" (ngModelChange)="email.set($event)" name="email" placeholder="Ingresa tu e-mail">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="message">Mensaje</label>
+          <div class="input-field align-top">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <textarea id="message" [ngModel]="message()" (ngModelChange)="message.set($event)" name="message" placeholder="Aquí tu mensaje ..."></textarea>
+          </div>
+        </div>
+
+        <div class="submit-wrapper">
+          <button type="submit" class="btn-primary form-submit-btn" [disabled]="isSending()">
+            Enviar Mensaje
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

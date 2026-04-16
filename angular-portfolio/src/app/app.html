@@ -1,0 +1,9 @@
+<div id="app-root-container">
+  @if (showLoadPage()) {
+    <app-load-page></app-load-page>
+  } @else {
+    <div class="fade-enter">
+      <app-home></app-home>
+    </div>
+  }
+</div>

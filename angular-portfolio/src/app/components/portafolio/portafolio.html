@@ -1,0 +1,82 @@
+<div id="portafolio" class="portafolio-section">
+  <!-- Intereses Section -->
+  <div class="interests-container container section-padding">
+    <div class="section-title-wrapper">
+      <h2 class="title section-title">- Intereses -</h2>
+    </div>
+    
+    <div class="interests-grid">
+      @for (interest of interests; track interest.name) {
+        <div class="interest-card">
+          <div class="icon-wrapper">
+            <img [src]="interest.icon" [alt]="interest.name" class="interest-icon" />
+          </div>
+          <h4 class="subtitle">{{ interest.name }}</h4>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Portafolio Slider Section -->
+  <div class="slider-bg section-padding">
+    <div class="container relative">
+      <div class="section-title-wrapper mb-5">
+        <h2 class="title section-title">- Portafolio -</h2>
+      </div>
+
+      <div class="slider-wrapper">
+        <div class="slider-track" [style.transform]="'translateX(-' + currentSlide() * 100 + '%)'">
+          @for (project of projects; track project.title) {
+            <div class="slide">
+              <div class="project-layout">
+                <div class="project-image-col">
+                  <div class="image-frame">
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <img [src]="project.image" [alt]="project.title" class="project-img" />
+                  </div>
+                </div>
+                
+                <div class="project-details-col">
+                  <div class="details-card glass-panel">
+                    <p class="paragraph description-text">{{ project.description }}</p>
+                    
+                    <div class="rating-stars">
+                      <span class="star">★</span>
+                      <span class="star">★</span>
+                      <span class="star">★</span>
+                      <span class="star">★</span>
+                      <span class="star">★</span>
+                    </div>
+
+                    @if (project.link) {
+                      <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="btn-primary mt-3">Ver Proyecto</a>
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Slider Controls -->
+        <button class="slider-btn prev-btn" (click)="prevSlide()" aria-label="Previous Project">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="slider-btn next-btn" (click)="nextSlide()" aria-label="Next Project">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        <!-- Slider Indicators -->
+        <div class="slider-indicators">
+          @for (project of projects; track project.title; let i = $index) {
+            <button class="indicator-dot" [class.active]="i === currentSlide()" (click)="setSlide(i)" [aria-label]="'Go to slide ' + (i + 1)"></button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

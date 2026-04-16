@@ -1,0 +1,48 @@
+<div class="skills-section" id="skills">
+  
+  <!-- Animated Background Space Layer -->
+  <div class="space-bg">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="clouds"></div>
+  </div>
+
+  <div class="container relative z-index-content section-padding">
+    <div class="text-center mb-5">
+      <h2 class="title" style="color: white; text-shadow: 0 0 10px rgba(255,255,255,0.3);">- Habilidades -</h2>
+      <p class="subtitle" style="color: #ccc; max-width: 800px; margin: 20px auto; font-weight: 400; line-height: 1.8;">
+        Desarrollador Web especializado en experiencias Front-End interactivas y dinámicas,
+        con sólidos conocimientos en frameworks como Angular, Vuejs y Nodejs, además de
+        fundamentos estructurales y lógicos en Back-End.
+      </p>
+    </div>
+
+    <!-- Interactive Bubble Diagram -->
+    <div class="skills-universe">
+      @for (skill of skills; track skill.name) {
+        <div class="skill-bubble" 
+             [style.width]="'calc(50px + ' + skill.level * 30 + 'px)'" 
+             [style.height]="'calc(50px + ' + skill.level * 30 + 'px)'"
+             [style.backgroundColor]="skill.color"
+             [style.borderColor]="skill.color">
+          <span class="skill-name">{{ skill.name }}</span>
+        </div>
+      }
+    </div>
+  </div>
+  
+  <!-- Wave Separator to transition context smoothly -->
+  <div class="wave-container">
+    <svg class="waves" viewBox="0 24 150 28" preserveAspectRatio="none">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="parallax">
+        <use href="#gentle-wave" x="48" y="0" fill="rgba(26, 26, 26, 0.7)" />
+        <use href="#gentle-wave" x="48" y="3" fill="rgba(26, 26, 26, 0.5)" />
+        <use href="#gentle-wave" x="48" y="5" fill="rgba(26, 26, 26, 0.3)" />
+        <use href="#gentle-wave" x="48" y="7" fill="var(--dark-alt)" />
+      </g>
+    </svg>
+  </div>
+</div>
